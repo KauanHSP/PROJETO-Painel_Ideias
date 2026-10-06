@@ -5,7 +5,7 @@
 }
 
 body {
-  background-color: rgb(132, 206, 255);
+  background-color: rgb(176, 223, 255);
   font-family: 'Times New Roman', Times, serif;
 }
 
@@ -13,6 +13,7 @@ body {
   min-height: 100vh;
   display: flex;
   justify-content: center;
+  align-items: center;
   text-align: center;
 }
 
@@ -20,6 +21,8 @@ body {
   width: 800px;
   background: #f8f9fa;
   padding: 30px;
+  margin-top: 30px;
+  margin-bottom: 30px;
   border-radius: 16px;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.08);
 }
@@ -68,4 +71,47 @@ background: #780caf;
 color: red;
 margin-top: 10px;
 font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.ideia-list {
+  list-style: none;
+  margin-top: 20px;
+}
+
+.ideia-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 2px solid #eaaaff;
+  padding: 12px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  box-shadow: 0 0 7px rgba(0, 0, 0, 0.08);
+}
+
+.container-ideia {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.completada {
+  text-decoration: line-through;
+  color: gray;
+}
+
+.botao-remover {
+  background: #db98ff;
+  color: rgb(84, 0, 137);
+  border: none;
+  width: 35px;
+  height: 35px;
+  font-size: 110%;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.botao-remover:hover {
+  background: #8e1ccc;
+  color: white;
 }
