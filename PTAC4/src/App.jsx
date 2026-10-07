@@ -58,7 +58,7 @@ function App() {
 
           <h1>Painel Das Ideias</h1>
 
-          <p className='subtitulo'>coloque aqui todas as ideia que aparecem na sua cachola</p>
+          <p className='subtitulo'>coloque aqui todas as ideias que aparecem na sua cachola</p>
 
           <form onSubmit={AddIdeia}>
             <input
@@ -137,8 +137,8 @@ function App() {
 
           <footer>
             <span>
-            <strong>{ideias.length} ideias</strong> no painel •{" "} 
-            <strong>{ideiasCompletadas}</strong> completadas
+              <strong>{ideias.length} ideias</strong> no painel •{" "} 
+              <strong>{ideiasCompletadas}</strong> completadas
             </span>
 
             {ideias.length > 0 && (
