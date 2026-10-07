@@ -61,16 +61,17 @@ form button {
   border-radius: 12px;
   cursor: pointer;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.08);
 }
 
 form button:hover {
-background: #780caf;
+  background: #780caf;
 }
 
 .erro {
-color: red;
-margin-top: 10px;
-font-family: Georgia, 'Times New Roman', Times, serif;
+  color: red;
+  margin-top: 10px;
+  font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
 .ideia-list {
@@ -87,12 +88,29 @@ font-family: Georgia, 'Times New Roman', Times, serif;
   margin-bottom: 10px;
   border-radius: 8px;
   box-shadow: 0 0 7px rgba(0, 0, 0, 0.08);
+  font-size: 120%;
 }
 
 .container-ideia {
   display: flex;
   align-items: center;
   gap: 10px;
+  word-break: break-word;
+  gap: 10px;
+  flex: 1;
+}
+
+input[type="checkbox"] {
+  width: 18.2px;
+  height: 18.2px;
+  cursor: pointer;
+  accent-color: #00a403;
+  flex-shrink: 0;
+}
+
+.ideia-item:has(input:checked) {
+  background: #fceaff;
+  border-color: #8a2ecc;
 }
 
 .completada {
@@ -114,4 +132,36 @@ font-family: Georgia, 'Times New Roman', Times, serif;
 .botao-remover:hover {
   background: #8e1ccc;
   color: white;
+  transform: scale(1.05);
+  transition: 0.2s;
+}
+
+.contador-caracter {
+  margin-top: 10px;
+}
+
+footer {
+  margin-top: 20px;
+  color: #444444;
+  border-top: 1.25px solid #873cc5;
+  padding-top: 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.botao-limpar{
+  background: #ff2323;
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.botao-limpar:hover {
+  background: #d80000;
+  transform: scale(1.08);
+  transition: 0.2s;
 }
