@@ -11,6 +11,7 @@ function App() {
     event.preventDefault();
 
     if(!novaIdeia.trim()){
+      setNovaIdeia("")
       setErro("Digite sua ideia antes de adicionar >:(");
       return;
     }
@@ -18,7 +19,7 @@ function App() {
     const ideia = {
       id: Date.now(),
       text: novaIdeia,
-      completada: false
+      feita: false
     };
 
     setIdeias((listaAtual) => [...listaAtual, ideia]);
@@ -31,12 +32,18 @@ function App() {
     setIdeias((listaAtual) => 
       listaAtual.map((ideia) => 
         ideia.id == id
-          ? { ...ideia , completada: !ideia.completada }
+          ? { ...ideia , feita: !ideia.feita }
           : ideia
         
       )
     )
   }
+
+  const ideiasCompletadas = ideias.filter((ideia) => ideia.feita).length;
+
+  function LimparTudo() {
+    setIdeias([]);
+  };
 
   function RemoverIdeia(id){
     setIdeias((listaAtual) => 
@@ -56,7 +63,9 @@ function App() {
           <form onSubmit={AddIdeia}>
             <input
              type="text" 
-             placeholder='Digite sua ideia aqui' 
+             placeholder='Digite sua ideia aqui'
+             //atributo que não deixa o texto passar de 80 caracteres
+             maxLength={80}
              value={novaIdeia} 
              onChange={(event) => {
               setNovaIdeia(event.target.value);
@@ -64,15 +73,31 @@ function App() {
              }}
             />
 
-            <button type="submit">
+            <button 
+              type="submit"
+              disabled={(novaIdeia.trim()).length > 80}>
               Adicionar
             </button>
           </form>
 
+          {novaIdeia.length == 80 && (
+            <p className='contador-caracter'>
+              Você atingiu o limite de 80 caracteres
+            </p>
+          )}
+
+          {novaIdeia.length > 40 && (
+            <p className='contador-caracter'>
+              {80 - novaIdeia.length} caracteres restantes
+            </p>
+          )}
+
           {erro && (
+            <div className='div-erro'>
             <p className='erro'>
               {erro}
             </p>
+            </div>
           )}
 
           <ul className='ideia-list'>
@@ -81,7 +106,7 @@ function App() {
                 <div className='container-ideia'>
                   <input 
                     type="checkbox" 
-                    checked={ideia.completada}
+                    checked={ideia.feita}
                     onChange={() => {
                       AlterarEstado(ideia.id)
                     }}
@@ -89,7 +114,7 @@ function App() {
 
                   <span
                     className={
-                      ideia.completada
+                      ideia.feita
                         ? "completada"
                         :  ""
                     }
@@ -110,7 +135,21 @@ function App() {
             ))}
           </ul>
 
+          <footer>
+            <span>
+            <strong>{ideias.length} ideias</strong> no painel •{" "} 
+            <strong>{ideiasCompletadas}</strong> completadas
+            </span>
 
+            {ideias.length > 0 && (
+              <button
+                className='botao-limpar'
+                onClick={LimparTudo}
+              >
+                Limpar Tudo
+              </button>
+            )}
+          </footer>
         </div>
       </div>
     </>
